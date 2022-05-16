@@ -33,8 +33,18 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
     buttons = [
         [
             InlineKeyboardButton(
-                text=_["CLOSEMENU_BUTTON"], callback_data="close"
+                text=f"{played} {bar} {dur}",
+                callback_data="GetTimer",
             )
+        ],
+        [
+            InlineKeyboardButton(
+                text=_["PL_B_2"],
+                callback_data=f"add_playlist {videoid}",
+            ),
+            InlineKeyboardButton(
+                text=_["PL_B_3"], switch_inline_query_current_chat=""
+            ),
         ],
     ]
     return buttons
@@ -52,9 +62,6 @@ def telegram_markup_timer(_, chat_id, played, dur):
         [
             InlineKeyboardButton(
                 text=_["PL_B_3"], switch_inline_query_current_chat=""
-            ),
-            InlineKeyboardButton(
-                text=_["CLOSEMENU_BUTTON"], callback_data="close"
             ),
         ],
     ]
@@ -74,14 +81,11 @@ def track_markup(_, videoid, user_id, channel, fplay):
             ),
         ],
         [
-            InlineKeyboardButton(
-                text=_["CLOSE_BUTTON"],
-                callback_data=f"forceclose {videoid}|{user_id}",
-            )
-        ],
+            InlineKeyboardButton(text="〖𝙊𝙒𝙉𝙀𝙍〗", url=f"https://t.me/anjali_m_pRoJeCt"),
+            InlineKeyboardButton(text="〖𝙂𝙍𝙊𝙐𝙋〗", url=f"https://t.me/+VfYbz3mFdD9iNjVh"),
+        ], 
     ]
     return buttons
-
 
 def stream_markup(_, videoid):
     buttons = [
@@ -95,9 +99,8 @@ def stream_markup(_, videoid):
             ),
         ],
         [
-            InlineKeyboardButton(
-                text=_["CLOSEMENU_BUTTON"], callback_data="close"
-            )
+            InlineKeyboardButton(text="〖𝙊𝙒𝙉𝙀𝙍〗", url=f"https://t.me/anjali_m_pRoJeCt"),
+            InlineKeyboardButton(text="〖𝙂𝙍𝙊𝙐𝙋〗", url=f"https://t.me/+VfYbz3mFdD9iNjVh"),
         ],
     ]
     return buttons
@@ -108,9 +111,6 @@ def telegram_markup(_):
         [
             InlineKeyboardButton(
                 text=_["PL_B_3"], switch_inline_query_current_chat=""
-            ),
-            InlineKeyboardButton(
-                text=_["CLOSEMENU_BUTTON"], callback_data="close"
             ),
         ],
     ]
@@ -130,10 +130,8 @@ def playlist_markup(_, videoid, user_id, ptype, channel, fplay):
             ),
         ],
         [
-            InlineKeyboardButton(
-                text=_["CLOSE_BUTTON"],
-                callback_data=f"forceclose {videoid}|{user_id}",
-            ),
+            InlineKeyboardButton(text="〖𝙊𝙒𝙉𝙀𝙍〗", url=f"https://t.me/anjali_m_pRoJeCt"),
+            InlineKeyboardButton(text="〖𝙂𝙍𝙊𝙐𝙋〗", url=f"https://t.me/+VfYbz3mFdD9iNjVh"),
         ],
     ]
     return buttons
@@ -145,10 +143,6 @@ def livestream_markup(_, videoid, user_id, mode, channel, fplay):
             InlineKeyboardButton(
                 text=_["P_B_3"],
                 callback_data=f"LiveStream {videoid}|{user_id}|{mode}|{channel}|{fplay}",
-            ),
-            InlineKeyboardButton(
-                text=_["CLOSEMENU_BUTTON"],
-                callback_data=f"forceclose {videoid}|{user_id}",
             ),
         ],
     ]
@@ -174,10 +168,6 @@ def slider_markup(
             InlineKeyboardButton(
                 text="❮",
                 callback_data=f"slider B|{query_type}|{query}|{user_id}|{channel}|{fplay}",
-            ),
-            InlineKeyboardButton(
-                text=_["CLOSE_BUTTON"],
-                callback_data=f"forceclose {query}|{user_id}",
             ),
             InlineKeyboardButton(
                 text="❯",
